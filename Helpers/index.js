@@ -42,6 +42,7 @@ const getList = (req, res) => {
       movies.map((movie) => {
         var picture = base64_encode(`./uploads${movie.ThumbNailPath}`);
         var temp = {
+          id: movie._id,
           name: movie.MovieName,
           year: movie.YearOfRelease,
           language: movie.Language,
@@ -54,4 +55,18 @@ const getList = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { uploadMovie, getList };
+const getMovie = (req, res) => {
+  moviedata
+    .findOne({ _id: req.body.id })
+    .exec()
+    .then((data) => {
+      var test = path.join(__dirname,"../uploads", data.VideoPath);
+      console.log(test);
+      res.sendFile(test);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports = { uploadMovie, getList, getMovie };

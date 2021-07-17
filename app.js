@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const md5 = require("md5");
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const fs = require("fs");
 const app = express();
 var multer = require("multer");
@@ -85,4 +85,5 @@ app.post(
 );
 
 app.get("/getmovies", functions.getList);
-app.listen(port, () => console.log("Listening to port"));
+app.post("/getmovie", functions.getMovie);
+app.listen(port, () => console.log("Listening to port", port));

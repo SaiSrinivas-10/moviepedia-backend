@@ -1,6 +1,9 @@
-GET https://moviepedia-backend.herokuapp.com/ HTTP/1.1
-content-type: "application/json"
+
+
+POST  http://localhost:3000/getmovie HTTP/1.1
+content-type: application/json
 
 {
-
+   "id":"60f2b779ae0ccb26989c7de8"  
 }
+
